@@ -30,7 +30,7 @@ def store_expense(new_expense):
     return expenses_traker
 
 def visualize_expenses():
-    if np.where(pd.isnull(expenses_trak)):
+    if np.where(pd.isnull(expenses_traker)):
         print("Some entries are incomplete and have been hidden")
     print(expenses_traker.dropna(axis=0).to_string(index=False))
 
