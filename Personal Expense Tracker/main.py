@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 import datetime
-
+import tkinter as tk
+from tkinter import filedialog
 
 expenses_traker = pd.DataFrame(columns=['date', 'category', 'amount', 'description'])
 budgets = {}
@@ -37,7 +38,7 @@ def visualize_expenses():
 
 def budget_setting(category="all"):
     try :
-        budget = float(str(input("Please indicate the budget: ")).replace(",", "."))
+        budget = float(str(input("Please indicate the budget for {} category: ".format(category.lower()))).replace(",", "."))
     except Exception as e:
         print("Please insert the correct amount")
         raise ValueError("Incorrect amount format")
@@ -54,8 +55,32 @@ def track_budget(category="all"):
     else :
         print("INFO: remaining budget on {} expenses : {}€".format(category.lower(), budgets[category.lower()] - expenses_tracked["amount"].sum()))
 
+def ask_directory():
+    root = tk.Tk()
+    root.withdraw()
+    dir_name = filedialog.asksaveasfilename(filetypes=[("Csv files", "*.csv")])
+    return dir_name
+
+def save_expenses():
+    dir = ask_directory()
+    expenses_traker.to_csv(dir+".csv", index=False)
+    print("File saved at location: ", dir)
+
+def ask_filename():
+    root = tk.Tk()
+    root.withdraw()
+    dir_name = filedialog.askopenfilename(filetypes=[("Csv files", "*.csv")])
+    return dir_name
+
+def load_expenses():
+    file_path = ask_filename()
+    expenses_traker = pd.read_csv(file_path)
+    return expenses_traker
+
+
+expenses_traker = load_expenses()
 input_expense()
 budget_setting("Food")
-input_expense()
 visualize_expenses()
 track_budget("food")
+save_expenses()
