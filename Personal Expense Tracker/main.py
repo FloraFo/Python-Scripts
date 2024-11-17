@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
 import datetime
-import GUI
 
 class Traker:
     def __init__(self):
-        #self.gui = GUI.GUI()
         self.expenses_traker = pd.DataFrame(columns=['date', 'category', 'amount', 'description'])
         self.budgets = {}
 
@@ -40,45 +38,23 @@ class Traker:
         message = "" 
         if np.where(pd.isnull(self.expenses_traker)):
             message = "Some entries are incomplete and have been hidden"
-        print(self.expenses_traker)
         self.expenses_traker.replace({'': np.nan, ' ': np.nan}, inplace=True)
         df = self.expenses_traker.dropna()
-        print(df)
         return message, df
 
-    def budget_setting(self, category="all"):
-        try :
-            budget = float(str(input("Please indicate the budget for {} category: ".format(category.lower()))).replace(",", "."))
-        except Exception as e:
-            print("Please insert the correct amount")
-            raise ValueError("Incorrect amount format")
+    def budget_setting(self, category, budget):
         self.budgets[category.lower()] = budget
+        return self.track_budget(category)
 
-    def track_budget(self, category="all"):
-        if category != "all" :
+    def track_budget(self, category):
+        if category != "" :
             expenses_tracked = self.expenses_traker[self.expenses_traker["category"].str.lower() == category.lower()]
         else :
             expenses_tracked = self.expenses_traker
 
         if expenses_tracked["amount"].sum() >= self.budgets[category.lower()]:
-            print("WARNING: you have overachieved your budget on {} expenses.\nTotal spent amount: {}€".format(category.lower(), expenses_tracked["amount"].sum()))
+            message = "WARNING: you have overachieved your budget on {} expenses.\nTotal spent amount: {}€".format(category.lower(), expenses_tracked["amount"].sum())
         else :
-            print("INFO: remaining budget on {} expenses : {}€".format(category.lower(), self.budgets[category.lower()] - expenses_tracked["amount"].sum()))
-
-    def save_expenses(self):
-        dir = self.gui.ask_directory()
-        self.expenses_traker.to_csv(dir+".csv", index=False)
-        print("File saved at location: ", dir)
-
-    def load_expenses(self):
-        file_path = self.gui.ask_filename()
-        expenses_traker = pd.read_csv(file_path)
-        return expenses_traker
-
-
-#expenses_traker = load_expenses()
-#input_expense()
-#budget_setting("Food")
-#visualize_expenses()
-#track_budget("food")
-#save_expenses()
+            message = "INFO: remaining budget on {} expenses : {}€".format(category.lower(), self.budgets[category.lower()] - expenses_tracked["amount"].sum())
+        return message
+    

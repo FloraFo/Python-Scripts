@@ -17,7 +17,7 @@ class GUI:
         
         # Load existing expenses
         frame1 = tk.Frame(master=self.root, relief='flat', width=400, height=100)
-        frame1.pack()
+        frame1.pack(pady=10)
 
         label = tk.Label(master=frame1, text="Please load your csv expense file.")
         label.pack(fill=tk.Y, side=tk.LEFT)
@@ -31,7 +31,7 @@ class GUI:
         label.pack(fill=tk.Y, side=tk.LEFT)
 
         frame3 = tk.Frame(master=self.root, relief='ridge', width=400, height=400)
-        frame3.pack()
+        frame3.pack(pady=10)
         label = tk.Label(master=frame3, text="Date")
         label.grid(row=1,column=1)
         self.date_entry = ttk.Entry(master=frame3)
@@ -58,17 +58,48 @@ class GUI:
 
         # View expenses 
         frame4 = tk.Frame(master=self.root, width=400, height=400)
-        frame4.pack()
+        frame4.pack(pady=10)
         label = tk.Label(master=frame4, text="View expenses")
         label.grid(row=1,column=1)
         view_expense_button = tk.Button(master=frame4, text="View expense", command=self.show_expenses)
         view_expense_button.grid(row=1,column=2)
-        # Track budget 
-        # Save expenses 
+        
+        # Track budget
+        frame5 = tk.Frame(master=self.root, width=400, height=400)
+        frame5.pack(pady=10)
+        label = tk.Label(master=frame5, text="Set budget for a category")
+        label.grid(row=1,column=1)
+        label = tk.Label(master=frame5, text="Budget category")
+        label.grid(row=2,column=1)
+        self.budget_category_entry = ttk.Entry(master=frame5)
+        self.budget_category_entry.grid(row=2,column=2)
+        label = tk.Label(master=frame5, text="Budget")
+        label.grid(row=2,column=3)
+        self.budget_entry = ttk.Entry(master=frame5)
+        self.budget_entry.grid(row=2,column=4)
+        set_budget_button = tk.Button(master=frame5, text="Set budget", command=self.set_budget)
+        set_budget_button.grid(row=2,column=5)
+        
+        # Save expenses
+        frame6 = tk.Frame(master=self.root, width=400, height=400)
+        frame6.pack(pady=10)
+        set_budget_button = tk.Button(master=frame6, text="Save expenses", command=self.save_expenses)
+        set_budget_button.pack()
+        
         # Exit
+        frame7 = tk.Frame(master=self.root, width=400, height=400)
+        frame7.pack(pady=10)
+        set_budget_button = tk.Button(master=frame7, text="Exit", command=self.root.quit)
+        set_budget_button.pack()
 
-        # Run the application
-        self.root.mainloop()
+    def set_budget(self):
+        try :
+            budget = float(str(self.budget_entry.get()).replace(",", "."))
+            message = self.cmd.budget_setting(self.budget_category_entry.get(), budget)
+            tk.messagebox.showinfo("INFO", message)
+        except Exception as e:
+            tk.messagebox.showwarning("Please insert the correct amount")
+            raise ValueError("Incorrect amount format")
 
     def add_expense(self):
         output = self.cmd.input_expense(self.date_entry.get(), self.category_entry.get(), self.description_entry.get(), self.amount_entry.get())
@@ -108,7 +139,6 @@ class GUI:
             print(exc_type, exc_tb.tb_lineno)
     
     def insert_rows(self):
-        """Insert rows into the treeview widget."""
         # Clear any previous data in the Treeview
         for item in self.tree.get_children():
             self.tree.delete(item)
@@ -129,11 +159,10 @@ class GUI:
         sorted_df = self.df.sort_values(by=col, ascending=not self.sort_reverse)
         
         # Re-insert rows in the new order
-        self.df = sorted_df  # Update the DataFrame with sorted data
-        self.insert_rows()    # Update the Treeview with sorted rows
+        self.df = sorted_df
+        self.insert_rows()
     
     def run(self):
-        # Run the Tkinter event loop
         self.root.mainloop()
 
     def ask_directory(self):   
@@ -148,6 +177,11 @@ class GUI:
         file_path = self.ask_filename()
         tk.messagebox.showinfo(title='Selected File', message=file_path)
         self.cmd.expenses_traker = pd.read_csv(file_path)
+    
+    def save_expenses(self):
+        dir = self.ask_directory()
+        self.cmd.expenses_traker.to_csv(dir+".csv", index=False)
+        tk.messagebox.showinfo("File saved", "File saved at location: {}".format(dir))
 
 if __name__ == "__main__":
     # Create and run the GUI
