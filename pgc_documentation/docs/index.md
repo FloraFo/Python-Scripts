@@ -11,16 +11,9 @@ Additionally, this site acts as a potential gateway for future **collaborations*
 Thank you for visiting, and I look forward to exploring future possibilities together! 🚀
 
 
-## Commands
+## Projects
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+* [**Personal Expense Traker**](projects/personalexpstraker.md) -  A Python-based assessment project that allows users to track and manage their personal expenses through an intuitive GUI.
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+

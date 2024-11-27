@@ -9,6 +9,8 @@ site_author: Filomena FORINA
 nav:
   - Home: index.md
   - About: about.md
+  - Projects:
+      - Personal Expense Traker: personalexpstraker.md
 
 theme:
   name: readthedocs
@@ -20,3 +22,4 @@ theme:
     - md
   color_mode: auto
   user_color_mode_toggle: True
+  prev_next_buttons_location: none
