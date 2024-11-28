@@ -9,7 +9,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Projects:
-      - Personal Expense Traker: projects/personalexpstraker.md
+      - Personal Expense Traker: Projects/personalexpstraker.md
 
 theme:
   name: readthedocs
