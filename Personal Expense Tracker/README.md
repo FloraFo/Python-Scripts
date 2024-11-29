@@ -1,3 +1,5 @@
+# Personal Expense Traker
+
 The **Personal Expense Tracker** is a simple application designed to help users manage their finances by tracking daily expenses, setting budgets, and categorizing spending. The app allows users to set monthly budgets for different categories, monitor their expenses, and view detailed reports. It also features file handling to save and load data, ensuring that users can easily keep track of their financial history. With an easy-to-use, menu-driven interface, this tool helps users stay on top of their spending and improve their financial management.
 
 
