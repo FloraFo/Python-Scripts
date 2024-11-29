@@ -1,8 +1,7 @@
 site_name: Filomena FORINA Projects Portfolio
 
-
 repo_url: https://github.com/FloraFo/Python-Scripts/
-edit_uri: edit/main/README.md
+edit_uri: blob/main/docs
 
 site_description: "This website showcases my AI and ML projects, sharing knowledge and insights gained through development. It serves as a platform for future collaborations and connections in the fields of Artificial Intelligence and Machine Learning."
 site_author: Filomena FORINA
@@ -10,7 +9,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Projects:
-      - Personal Expense Traker: Projects/personalexpstraker.md
+      - Personal Expense Tracker: Projects/personalexpstracker.md
 
 theme:
   name: readthedocs
