@@ -13,13 +13,4 @@ nav:
       - Preserving Heritage – Enhancing Tourism with AI: Projects/preservingheritage.md
 
 theme:
-  name: material
-  features:
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-  language: en
+  name: readthedocs
