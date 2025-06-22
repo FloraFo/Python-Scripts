@@ -42,10 +42,8 @@ Key steps:
 - Cleaned and merged `user.csv`, `tourism_with_id.csv`, and `tourism_rating.csv`
 - Analyzed user age groups, city preferences, and place popularity
 - Identified top-rated places and common tourist patterns
-- Built a **memory-based collaborative filtering model** using user-item interactions
+- Built a **memory-based collaborative filtering model** using user-item interactions with surprise library
 
-✅ *MAP@K Score: YY (placeholder — insert your performance metric if available)*
-#TODO
 ---
 
 ## 📂 Datasets Used
