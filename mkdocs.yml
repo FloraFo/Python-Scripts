@@ -10,15 +10,16 @@ nav:
   - About: about.md
   - Projects:
       - Personal Expense Tracker: Projects/personalexpstracker.md
+      - Preserving Heritage – Enhancing Tourism with AI: Projects/preservingheritage.md
 
 theme:
-  name: readthedocs
-  highlightjs: true
-  hljs_languages:
-    - yaml
-    - rust
-    - py
-    - md
-  color_mode: auto
-  user_color_mode_toggle: True
-  prev_next_buttons_location: none
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+  language: en
