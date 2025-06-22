@@ -13,7 +13,7 @@ Thank you for visiting, and I look forward to exploring future possibilities tog
 
 ## Projects
 
-* [**Personal Expense Traker**](Projects/personalexpstraker.md) -  A Python-based assessment project that allows users to track and manage their personal expenses through an intuitive GUI.
+* [**Personal Expense Traker**](Projects/personalexpstracker.md) -  A Python-based assessment project that allows users to track and manage their personal expenses through an intuitive GUI.
 
 
 
