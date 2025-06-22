@@ -1,8 +1,8 @@
-# 🏛️ Capstone Project: Preserving Heritage – Enhancing Tourism with AI
+# Preserving Heritage – Enhancing Tourism with AI
 
 This capstone project addresses a dual challenge: preserving historical heritage through automation and enhancing the tourist experience through intelligent recommendations. It is divided into two core parts involving both deep learning and machine learning techniques.
 
-## 🚀 Project Objectives
+## Project Objectives
 
 ### 1. Heritage Structure Classification with TensorFlow 🧠
 Using **TensorFlow**, I developed a deep learning model to classify historical structures based on images. Leveraging **transfer learning** with a pre-trained CNN backbone, the model was fine-tuned to predict the **category of heritage structures** (e.g., temples, forts, monuments). Key steps included:
@@ -18,11 +18,11 @@ For the second part, I used **machine learning and EDA** to build a personalized
 - Insights on the most visited and highly rated tourist places
 - Development of a **collaborative filtering model** to suggest attractions based on user behavior
 
-## 📂 Datasets Used
+## Datasets Used
 - `Structures_dataset.zip` – Images of historical structures
 - `Dataseet_test` – Images of historical structures for validation
 - `user.csv`, `tourism_with_id.csv`, `tourism_rating.csv` – User demographics and tourism activity
 
-## 💡 Outcome
+## Outcome
 The combined AI solutions automate heritage categorization and intelligently connect tourists with culturally rich destinations, supporting both preservation and sustainable tourism.
 
